@@ -159,6 +159,7 @@ function calculateTotal(){
         comment = 'Not even 120% though?'
     }else if(totalIncentive >= 115){
         payRate = 28.93
+        comment = 'You can def do better'
     }else if(totalIncentive >= 112){
         payRate = 28.93
     }else if(totalIncentive >= 109){
