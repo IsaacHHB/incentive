@@ -165,6 +165,7 @@ function calculateTotal(){
         comment = 'Are you even trying?'
     }else if(totalIncentive >= 109){
         payRate = 28.93
+        comment = 'Maybe one day you will actually do better.'
     }else if(totalIncentive >= 106){
         payRate = 28.93
     }else if(totalIncentive >= 103){
