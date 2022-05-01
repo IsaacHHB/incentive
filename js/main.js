@@ -178,7 +178,7 @@ function calculateTotal(){
     remainingPay = remainingPay * 25.71
     totalPay = incentivePay + remainingPay
     totalPay = totalPay.toFixed(2)
-    document.querySelector('h2').innerText = `Your average for the week is ${totalIncentive} (${comment}) and your total pay for the week is $${totalPay}`
+    document.querySelector('h2').innerText = `Your average for the week is ${totalIncentive}% (${comment}) and your total pay for the week is $${totalPay}`
     
 }
 
