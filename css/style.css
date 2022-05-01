@@ -1,0 +1,29 @@
+body{
+    background: linear-gradient(rgb(88, 201, 122),rgb(255, 255, 255));
+    background-repeat :no-repeat;
+    background-size: cover;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    margin: 0 12%;
+}
+
+main{
+  
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 9%;
+}
+table{
+    margin: 20px auto;
+}
+table, th, td{
+    border: 1px solid;
+    background-color: white;
+}

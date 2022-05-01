@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css\style.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Keep track and calculate your WIP</h1>
+        <main>
+            <section>
+                <label for="startTime">Enter start time</label>       
+                <input id="startTime" type="time">
+
+                <label for="endTime">Enter end time</label>
+                <input id="endTime" type="time">
+
+                <label for="incentive">Enter your performance number</label>
+                <input id="incentive" type="number">
+
+                <label for="hours">Enter your time in selection</label>
+                <input id="hours" type="number">   
+
+                <input type="submit" value="Submit" id="submit" /> 
+                <input type="submit" value="Calculate" id="calculate" /> 
+                <input type="reset" value="Reset" id="reset"/>
+            </section>
+            <section>
+                <table id="numbersRan">
+                    <thead>
+                        <tr>
+                            <th>Hours</th>
+                            <th>Performance</th>
+                            <th>Hours In Selection</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <h2></h2>
+            </section>
+        </main>
+    <script src="js\main.js"></script>
+    </body>
+</html>
