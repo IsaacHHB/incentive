@@ -160,8 +160,8 @@ function calculateTotal(){
     }else if(totalIncentive >= 154){
         payRate = 38.90
         comment = 'Okay I guess you KINDA ran'
-    }else if(totalIncentive >= 121){
-        payRate = 50.93
+    }else if(totalIncentive >= 151){
+        payRate = 38.17
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 121){
         payRate = 50.93
