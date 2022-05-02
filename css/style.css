@@ -8,10 +8,11 @@ h1{
     display: flex;
     justify-content: center;
     margin: 0 12%;
+    font-size: 190%;
 }
 
 main{
-  
+  font-size: 120%;
 }
 
 section{
