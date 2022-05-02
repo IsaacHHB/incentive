@@ -1,5 +1,6 @@
 //unload find locally stored data and display it
 
+const payKey = ['p1']
 const hourKey = ['h1','h2','h3','h4','h5','h6','h7']
 const minuteKey = ['m1','m2','m3','m4','m5','m6','m7']
 const incentiveKey = ['i1','i2','i3','i4','i5','i6','i7']
@@ -64,12 +65,15 @@ function calcTime(start, end){
 
 function displayDay(displayIndex){
     let newRow = tableRef.insertRow(-1)
-    let hourCell = newRow.insertCell(0)
-    let incentiveCell = newRow.insertCell(1)
-    let selectionCell = newRow.insertCell(2)
+    let payCell = newRow.insertCell(0)
+    let hourCell = newRow.insertCell(1)
+    let incentiveCell = newRow.insertCell(2)
+    let selectionCell = newRow.insertCell(3)
+    let payText = document.createTextNode(localStorage.getItem(payKey[displayIndex]))
     let hourText = document.createTextNode(localStorage.getItem(hourKey[displayIndex]) + ':' + (localStorage.getItem(minuteKey[displayIndex])))
     let incentiveText = document.createTextNode(localStorage.getItem(incentiveKey[displayIndex]))
     let selectionText = document.createTextNode(localStorage.getItem(selectionKey[displayIndex]))
+    payCell.appendChild(payText)
     hourCell.appendChild(hourText)
     incentiveCell.appendChild(incentiveText)
     selectionCell.appendChild(selectionText)
@@ -79,12 +83,14 @@ function submit(){
     if(dayIndex > 6){
         return;
     }
+    const payRate = document.querySelector('#payRate').value
     const startTime = document.querySelector('#startTime').value
     const endTime = document.querySelector('#endTime').value
     const incentive = document.querySelector('#incentive').value
     const hours = document.querySelector('#hours').value
     console.log(startTime)
     let timeWorked = calcTime(startTime,endTime)
+    localStorage.setItem(payKey[dayIndex], payRate)
     localStorage.setItem(hourKey[dayIndex], timeWorked[0])
     localStorage.setItem(minuteKey[dayIndex], timeWorked[1])
     localStorage.setItem(incentiveKey[dayIndex], incentive)
@@ -130,13 +136,13 @@ function calculateTotal(){
     let totalMinutes = 0
     let totalIncentive = 0
     let totalSelection = 0
-    let payRate = 25.71
     let incentivePay = 0
     let remainingPay = 0
     let totalPay = 0
     let comment = 'Man you suck'
     console.log(dayIndex)
     for(i = 0; i < dayIndex; i++){
+        // totalPay += Number(localStorage.getItem(payKey[0]))
         totalHours += Number(localStorage.getItem(hourKey[i]))
         totalMinutes += Number(localStorage.getItem(minuteKey[i]))
         totalIncentive += Number(localStorage.getItem(incentiveKey[i]))
@@ -146,75 +152,77 @@ function calculateTotal(){
         totalHours += Math.floor(totalMinutes / 60) 
         totalMinutes = totalMinutes % 60
     }
+    totalPay += Number(localStorage.getItem(payKey[0]))
     totalHours = totalHours + (totalMinutes / 60) - (.5 * dayIndex)
     totalIncentive = totalIncentive / dayIndex
 
     //unfinished need the numbers from work
 
     if(totalIncentive >= 160){
-        payRate = 40.36
+        totalPay += 14.65
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 157){
-        payRate = 39.63
+        totalPay += 13.92
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 154){
-        payRate = 38.90
+        totalPay += 13.19
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 151){
-        payRate = 38.17
+        totalPay += 12.46
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 148){
-        payRate = 37.19
+        totalPay += 11.48
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 145){
-        payRate = 36.24
+        totalPay += 10.53
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 142){
-        payRate = 35.32
+        totalPay += 9.61
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 139){
-        payRate = 34.43
+        totalPay += 8.72
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 136){
-        payRate = 33.58
+        totalPay += 7.87
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 133){
-        payRate = 32.75
+        totalPay += 7.04
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 130){
-        payRate = 31.96
+        totalPay += 6.25
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 127){
-        payRate = 31.19
+        totalPay += 5.48
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 124){
-        payRate = 30.46
+        totalPay += 4.75
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 121){
-        payRate = 29.76
+        totalPay += 4.05
         comment = 'Okay I guess you KINDA ran'
     }else if(totalIncentive >= 118){
-        payRate = 29.09
+        totalPay += 3.38
         comment = 'Not even 120% though?'
     }else if(totalIncentive >= 115){
-        payRate = 28.45
+        totalPay += 2.74
         comment = 'You can def do better'
     }else if(totalIncentive >= 112){
-        payRate = 27.84
+        totalPay += 2.13
         comment = 'Are you even trying?'
     }else if(totalIncentive >= 109){
-        payRate = 27.26
+        totalPay += 1.55
         comment = 'Maybe one day you will actually do better.'
     }else if(totalIncentive >= 106){
-        payRate = 26.71
+        totalPay += 1
         comment = 'Maybe you should actually try...'
     }else if(totalIncentive >= 103){
-        payRate = 26.20
+        totalPay += .49
         comment = 'Damn you\'re slow.'
     }
-    incentivePay = payRate * totalSelection 
+    incentivePay = totalPay * totalSelection 
     remainingPay = totalHours - totalSelection
-    remainingPay = remainingPay * 25.71
+    remainingPay = remainingPay * Number(localStorage.getItem(payKey[0]))
+    console.log(Number(localStorage.getItem(payKey[0])))
     totalPay = incentivePay + remainingPay
     totalPay = totalPay.toFixed(2)
     document.querySelector('h2').innerText = `Your average for the week is ${totalIncentive}% (${comment}) and your total pay for the week is $${totalPay}`
