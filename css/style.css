@@ -20,6 +20,20 @@ section{
     width: 80%;
     margin-left: 9%;
 }
+#submit{
+    font-size: 120%;
+    margin: 5% 0;
+    padding: 2% 0;
+}
+#calculate{
+    font-size: 120%;
+    padding: 2% 0;
+    margin-bottom: 5%;
+}
+#reset{
+    font-size: 120%;
+    padding: 2% 0;
+}
 table{
     margin: 20px auto;
 }
