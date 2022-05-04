@@ -4,7 +4,7 @@ const payKey = ['p1']
 const hourKey = ['h1','h2','h3','h4','h5','h6','h7']
 const minuteKey = ['m1','m2','m3','m4','m5','m6','m7']
 const incentiveKey = ['i1','i2','i3','i4','i5','i6','i7']
-const casesKey = ['h1','h2','h3','h4','h5','h6','h7']
+const casesKey = ['c1','c2','c3','c4','c5','c6','c7']
 const selectionKey = ['s1','s2','s3','s4','s5','s6','s7']
 
 let dayIndex = findDayIndex()
@@ -91,6 +91,7 @@ function submit(){
     const startTime = document.querySelector('#startTime').value
     const endTime = document.querySelector('#endTime').value
     const incentive = document.querySelector('#incentive').value
+    const cases = document.querySelector('#cases').value
     const hours = document.querySelector('#hours').value
     console.log(startTime)
     let timeWorked = calcTime(startTime,endTime)
@@ -98,6 +99,7 @@ function submit(){
     localStorage.setItem(hourKey[dayIndex], timeWorked[0])
     localStorage.setItem(minuteKey[dayIndex], timeWorked[1])
     localStorage.setItem(incentiveKey[dayIndex], incentive)
+    localStorage.setItem(casesKey[dayIndex], cases)
     localStorage.setItem(selectionKey[dayIndex], hours)
     displayDay(dayIndex)
     dayIndex += 1
