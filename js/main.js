@@ -69,7 +69,7 @@ function displayDay(displayIndex){
     let payCell = newRow.insertCell(0)
     let hourCell = newRow.insertCell(1)
     let incentiveCell = newRow.insertCell(2)
-    let incentiveCell = newRow.insertCell(3)
+    let casesCell = newRow.insertCell(3)
     let selectionCell = newRow.insertCell(4)
     let payText = document.createTextNode(localStorage.getItem(payKey[displayIndex]))
     let hourText = document.createTextNode(localStorage.getItem(hourKey[displayIndex]) + ':' + (localStorage.getItem(minuteKey[displayIndex])))
