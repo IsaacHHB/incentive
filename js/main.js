@@ -150,6 +150,7 @@ function calculateTotal(){
     let totalPay = 0
     let totalCases = 0
     let comment = 'Man you suck'
+    let casesComment = 'You can\'t even hit 5000 though?!'
     console.log(dayIndex)
     for(i = 0; i < dayIndex; i++){
         // totalPay += Number(localStorage.getItem(payKey[0]))
@@ -230,6 +231,13 @@ function calculateTotal(){
         totalPay += .49
         comment = 'Damn you\'re slow.'
     }
+    if(totalCases >= 10000){
+        casesComment = 'You are eligible for a $200 bonus as long as you didn\'t fuck up'
+    }else if(totalCases >= 7500){
+        casesComment = 'You are eligible for a $150 bonus as long as you didn\'t fuck up'
+    }else if(totalCases >= 5000){
+        casesComment = 'You are eligible for a $100 bonus as long as you didn\'t fuck up'
+    }
     incentivePay = totalPay * totalSelection 
     remainingPay = totalHours - totalSelection
     remainingPay = remainingPay * Number(localStorage.getItem(payKey[0]))
@@ -238,7 +246,7 @@ function calculateTotal(){
     totalPay = totalPay.toFixed(2)
     document.querySelector('#average').innerText = `Your average for the week is ${totalIncentive}%`
     document.querySelector('#comment').innerText = `(${comment})`
-    document.querySelector('#casesPicked').innerText = `You picked ${totalCases} cases`
+    document.querySelector('#casesPicked').innerText = `You picked ${totalCases} cases(${casesComment})`
     document.querySelector('#pay').innerText = `Your total pay for the week is $${totalPay}`
 }
 
