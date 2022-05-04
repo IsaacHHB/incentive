@@ -4,6 +4,7 @@ const payKey = ['p1']
 const hourKey = ['h1','h2','h3','h4','h5','h6','h7']
 const minuteKey = ['m1','m2','m3','m4','m5','m6','m7']
 const incentiveKey = ['i1','i2','i3','i4','i5','i6','i7']
+const casesKey = ['h1','h2','h3','h4','h5','h6','h7']
 const selectionKey = ['s1','s2','s3','s4','s5','s6','s7']
 
 let dayIndex = findDayIndex()
@@ -68,14 +69,17 @@ function displayDay(displayIndex){
     let payCell = newRow.insertCell(0)
     let hourCell = newRow.insertCell(1)
     let incentiveCell = newRow.insertCell(2)
-    let selectionCell = newRow.insertCell(3)
+    let incentiveCell = newRow.insertCell(3)
+    let selectionCell = newRow.insertCell(4)
     let payText = document.createTextNode(localStorage.getItem(payKey[displayIndex]))
     let hourText = document.createTextNode(localStorage.getItem(hourKey[displayIndex]) + ':' + (localStorage.getItem(minuteKey[displayIndex])))
     let incentiveText = document.createTextNode(localStorage.getItem(incentiveKey[displayIndex]))
+    let casesText = document.createTextNode(localStorage.getItem(casesKey[displayIndex]))
     let selectionText = document.createTextNode(localStorage.getItem(selectionKey[displayIndex]))
     payCell.appendChild(payText)
     hourCell.appendChild(hourText)
     incentiveCell.appendChild(incentiveText)
+    casesCell.appendChild(casesText)
     selectionCell.appendChild(selectionText)
 }
 
