@@ -58,10 +58,7 @@ function calcTime(start, end){
     let hours = Math.floor(diff / 1000 / 60 / 60);
     diff -= hours * 1000 * 60 * 60;
     let minutes = Math.floor(diff / 1000 / 60);
-    console.log(hours)
-    console.log(minutes)
     return [hours, minutes]
-    // console.log(endWork)
 }
 
 function displayDay(displayIndex){
@@ -103,22 +100,7 @@ function submit(){
     localStorage.setItem(selectionKey[dayIndex], hours)
     displayDay(dayIndex)
     dayIndex += 1
-
-
-    // let saveIncentive = incentive
-
-    // if(!localStorage.getItem('incentive')){
-    //     localStorage.setItem('incentive', 0)
-    // }else{
-    //     saveIncentive = localStorage.getItem('incentive') + " ; " + incentive
-    //     localStorage.setItem('incentive', incentive)
-    // }
-    // document.querySelector('#save').innerText = localStorage.getItem('incentive')
-
  }
-    // incentive = document.querySelector('#incentive').value
-    // localStorage.setItem('incentive', incentive)
-    // document.querySelector('#save').innerText = localStorage.getItem('incentive')
 
 //reset local storage
 
@@ -153,7 +135,6 @@ function calculateTotal(){
     let casesComment = 'You can\'t even hit 5000 though?!'
     console.log(dayIndex)
     for(i = 0; i < dayIndex; i++){
-        // totalPay += Number(localStorage.getItem(payKey[0]))
         totalHours += Number(localStorage.getItem(hourKey[i]))
         totalMinutes += Number(localStorage.getItem(minuteKey[i]))
         totalIncentive += Number(localStorage.getItem(incentiveKey[i]))
@@ -168,7 +149,7 @@ function calculateTotal(){
     totalHours = totalHours + (totalMinutes / 60) - (.5 * dayIndex)
     totalIncentive = totalIncentive / dayIndex
 
-    //unfinished need the numbers from work
+    //crunch the numbers for total pay and total incenctive
 
     if(totalIncentive >= 160){
         totalPay += 14.65
@@ -249,7 +230,3 @@ function calculateTotal(){
     document.querySelector('#casesPicked').innerText = `You picked ${totalCases} cases(${casesComment})`
     document.querySelector('#pay').innerText = `Your total pay for the week is $${totalPay}`
 }
-
-// let profit = calculateProfit(hourlyRate, hours, taxRate)
-
-// let taxesHeld = holdForTaxes(profit)
