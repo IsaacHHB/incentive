@@ -145,6 +145,7 @@ function calculateTotal(){
     let incentivePay = 0
     let remainingPay = 0
     let totalPay = 0
+    let totalCases = 0
     let comment = 'Man you suck'
     console.log(dayIndex)
     for(i = 0; i < dayIndex; i++){
@@ -152,6 +153,7 @@ function calculateTotal(){
         totalHours += Number(localStorage.getItem(hourKey[i]))
         totalMinutes += Number(localStorage.getItem(minuteKey[i]))
         totalIncentive += Number(localStorage.getItem(incentiveKey[i]))
+        totalCases += Number(localStorage.getItem(casesKey[i]))
         totalSelection += Number(localStorage.getItem(selectionKey[i]))
     }
     if(totalMinutes > 60){
@@ -232,7 +234,7 @@ function calculateTotal(){
     totalPay = incentivePay + remainingPay
     totalPay = totalPay.toFixed(2)
     document.querySelector('h2').innerText = `Your average for the week is ${totalIncentive}% (${comment}) and your total pay for the week is $${totalPay}`
-    
+    document.querySelector('h3').innerText = `You picked ${totalCases}`
 }
 
 // let profit = calculateProfit(hourlyRate, hours, taxRate)
