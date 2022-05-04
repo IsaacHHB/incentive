@@ -128,7 +128,10 @@ function resetIncentive(){
     localStorage.clear()
     dayIndex = 0
     tableRef.innerHTML = "";
-    document.querySelector('h2').innerText = ''
+    document.querySelector('#average').innerText = ''
+    document.querySelector('#comment').innerText = ''
+    document.querySelector('#casesPicked').innerText = ''
+    document.querySelector('#pay').innerText = ''
 }
 
 
@@ -233,8 +236,10 @@ function calculateTotal(){
     console.log(Number(localStorage.getItem(payKey[0])))
     totalPay = incentivePay + remainingPay
     totalPay = totalPay.toFixed(2)
-    document.querySelector('h2').innerText = `Your average for the week is ${totalIncentive}% (${comment}) and your total pay for the week is $${totalPay}`
-    document.querySelector('h3').innerText = `You picked ${totalCases}`
+    document.querySelector('#average').innerText = `Your average for the week is ${totalIncentive}%`
+    document.querySelector('#comment').innerText = `(${comment})`
+    document.querySelector('#casesPicked').innerText = `You picked ${totalCases} cases`
+    document.querySelector('#pay').innerText = `Your total pay for the week is $${totalPay}`
 }
 
 // let profit = calculateProfit(hourlyRate, hours, taxRate)
